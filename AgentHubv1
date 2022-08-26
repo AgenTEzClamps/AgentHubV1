@@ -26,6 +26,8 @@ end)
 Section:NewButton("Fly", "E to toggle", function()
     print(loadstring(game:HttpGet('https://pastebin.com/raw/u5WsXVxm'))()
 )end)
+Section:NewButton("Godmode", "Godmode", function()
+    print(loadstring(game:HttpGet('https://pastebin.com/raw/34xHUSPJ'))()
 
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Misc")
