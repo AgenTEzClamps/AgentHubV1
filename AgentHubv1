@@ -23,8 +23,8 @@ Section:NewButton("Infinite Yeild", "Its an admin script to type ;rj. used for c
     print(loadstring(game:HttpGet('https://pastebin.com/raw/LxkJZa4Y'))()
 )button:UpdateButton("Success!")
 end)
-Section:NewButton("Fly", "Fly", function()
-    print(loadstring(game:HttpGet('https://pastebin.com/raw/AnuhPRsk'))()
+Section:NewButton("Fly", "E to toggle", function()
+    print(loadstring(game:HttpGet('https://pastebin.com/raw/u5WsXVxm'))()
 )end)
 
 local Tab = Window:NewTab("Misc")
