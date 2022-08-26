@@ -1,0 +1,222 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("AFS SCRIPT - By Agent", colors)
+local colors = {
+    SchemeColor = Color3.fromRGB(0,255,255),
+    Background = Color3.fromRGB(0, 0, 0),
+    Header = Color3.fromRGB(0, 0, 0),
+    TextColor = Color3.fromRGB(255,255,255),
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+
+
+local Tab = Window:NewTab("AFS")
+local Section = Tab:NewSection("AFS")
+Section:NewButton("Chakra Dupe", "GO into YOUR zone that ya train chakra. It will work the best there", function()
+    print(loadstring(game:HttpGet("https://pastebin.com/raw/fRcbSGJr"))()
+)button:UpdateButton("Success!")
+end)
+Section:NewButton("Yen Dupe", "Go do dimesion 1 and go into the ice dungeon", function()
+    print(loadstring(game:HttpGet("https://pastebin.com/raw/wCd5NfAD"))()
+)button:UpdateButton("Success!")
+end)
+Section:NewButton("Infinite Yeild", "Its an admin script to type ;rj. used for chakra dupe.", function()
+    print(loadstring(game:HttpGet('https://pastebin.com/raw/LxkJZa4Y'))()
+)button:UpdateButton("Success!")
+end)
+Section:NewButton("Fly", "Fly", function()
+    print(loadstring(game:HttpGet('https://pastebin.com/raw/AnuhPRsk'))()
+)end)
+
+local Tab = Window:NewTab("Misc")
+local Section = Tab:NewSection("Misc")
+Section:NewButton("WalkSpeed Bypass (most games not needed", "", function(s)
+    local Old;
+      Old = hookmetamethod(game, "__index", function(self, key)
+        if key == "WalkSpeed" and self == game.Players.LocalPlayer.Character.Humanoid then
+          return 10
+        end
+        return Old(self, key)
+    end)
+    _G.Byp = true
+end)
+Section:NewSlider("Walkspeed", "", 200, 0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("Jump Power", "", 200, 0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+Section:NewSlider("Hip Height", "", 20,0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+Section:NewSlider("Gravity", "", 300,0, function(s)
+    workspace.Gravity = s
+end)
+Section:NewButton("Reset Gravity", "", function(s)
+    workspace.Gravity = 196.2
+end)
+Section:NewButton("Invisibility", "turn invis", function()
+    local Player = game.Players.LocalPlayer
+        Player.Character.LowerTorso:Destroy()
+    Player.Character.UpperTorso.CFrame = CFrame.new(-217.5761260986328, 67.0986099243164, -270.5904235839844)
+end)
+local Section = Tab:NewSection("Buildings")
+Section:NewDropdown("Select Building", "yes", {"None", "TwinTowers", "Platform", "Stairs", "Penis"}, function(selected)
+    _G.Build = selected
+end)
+
+Section:NewButton("Build", "build", function()
+    if _G.DeletePreviousBuilds == true then
+        for i,v in pairs(workspace:GetChildren()) do
+            if v:IsA("Folder") and v.Name == "Tempp" or v.Name == "PenisHolder" or v.Name == "WTC" then
+                v:Destroy()
+            end
+        end
+    end
+    
+    if _G.Build == "None" then
+        print("No builds selected")
+    end
+    
+    if _G.Build == "TwinTowers" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Vezise/vezzyscripts/main/thewtc"))()
+        Instance.new('SurfaceLight', workspace.WTC.WorldTrade)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.WTC.WorldTrade.CFrame
+        game:GetService("TweenService"):Create(workspace.WTC.PlaneMesh, TweenInfo.new(15), {Position = workspace.WTC.WorldTrade.Position}):Play()
+        task.wait(6)
+        for i = 1, 1000 do
+            local Explosion = Instance.new('Explosion', workspace.WTC.WorldTrade)
+            local Fire = Instance.new('Fire', workspace.WTC.WorldTrade)
+            Fire.Size = 30
+            Fire.Heat = 25
+            Explosion.BlastPressure = math.huge
+            Explosion.BlastRadius = math.huge
+            Explosion.Position = workspace.WTC.WorldTrade.Position
+        end
+            
+        if _G.SelfDestruct == true then
+            wait(SelfDestructTime)
+            workspace.WTC:Destroy()
+        else
+            warn(SelfDestruct)
+        end
+    end
+    
+    if _G.Build == "Platform" then
+        CG = Instance.new("Folder", workspace)
+        CG.Name = "Tempp"
+        PF = Instance.new("Part", CG)
+        PF.Anchored = true
+        PF.Size = Vector3.new(_G.PSize ,1, _G.PSize)
+        PF.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(5,3,0)
+        if SelfDestruct == true then
+            wait(SelfDestructTime)
+            PF:Destroy()
+        else
+            warn(SelfDestruct)
+        end
+    end
+    
+    if _G.Build == "Stairs" then
+        CH = Instance.new("Folder", workspace)
+        CH.Name = "Tempp"
+            
+        local Position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-2.5,-2)
+        
+        function MakeSide(Part,Off)
+            wait(0.005)
+            local Side = Instance.new("Part", Part)
+            Side.Size = Vector3.new(1,3,2)
+            Side.Anchored = true
+            Side.CFrame = Part.CFrame * Off
+            return Side
+        end
+            
+        for i = 1, _G.Steps do
+            wait(0.005)
+            local Part = Instance.new("Part", CH)
+            Part.CFrame = Position
+            Part.Anchored = true
+            MakeSide(Part,CFrame.new(-2.5,1,0))
+            MakeSide(Part,CFrame.new(2.5,1,0))
+            Position = CFrame.new(0,1,-2)
+        end
+            
+        if _G.SelfDestruct == true then
+            wait(SelfDestructTime)
+            CH:Destroy()
+        else
+            warn(SelfDestruct.. " - Self-Destruct")
+        end
+    end
+        
+    if _G.Build == "Penis" then
+        PH = Instance.new('Folder', workspace)
+        PH.Name = "PenisHolder"
+        Balls = Instance.new('Part', PH)
+        Shlong = Instance.new('Part', PH)
+        Balls.Anchored = true
+        Balls.Size = Vector3.new(5,1,2)
+        Shlong.Anchored = true
+        Shlong.Size = Vector3.new(2, _G.PLength, 2)
+        Balls.CFrame = game.Players.LocalPlayer.Character["HumanoidRootPart"].CFrame + Vector3.new(0,-2,0)
+        Shlong.CFrame = Balls.CFrame + Vector3.new(0,_G.PLength,0) / 2
+
+        if _G.SelfDestruct == true then
+            wait(SelfDestructTime)
+            PH:Destroy()
+        else
+            warn(SelfDestruct)
+        end
+    end
+end)
+
+Section:NewLabel("Build Configuration")
+
+Section:NewToggle("Auto-Delete Previous Builds", "", function(s)
+    _G.DeletePreviousBuilds = s 
+end)
+
+Section:NewToggle("Self-Destruct", "", function(s)
+    _G.SelfDestruct = s 
+end)
+
+Section:NewSlider("Self-Destruct (Sec)", "", 60,1, function(s)
+    _G.SelfDestructTime = s 
+end)
+
+Section:NewSlider("Self-Destruct (Min)", "", 10,1, function(s)
+    _G.SelfDestructTime = s * 60
+end)
+
+Section:NewSlider("Stair Steps", "", 400,1, function(s)
+    _G.Steps = s
+end)
+
+Section:NewSlider("Platform Size", "", 50,1, function(s)
+    _G.PSize = s
+end)
+
+Section:NewSlider("Penis Length", "", 50,1, function(s)
+    _G.PLength = s
+end)
+
+
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Settings")
+Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.LeftAlt, function()
+	Library:ToggleUI()
+end)
+Section:NewColorPicker("Color Text", "Color Info", Color3.fromRGB(0,0,0), function(color)
+    print()
+end)
+Section:NewButton("Reset", "Reset your Character", function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+
+
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Credits")
+Section:NewButton("Copy Discord", "a", function()
+    setclipboard("")
+end)
