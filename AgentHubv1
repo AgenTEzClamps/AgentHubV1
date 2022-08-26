@@ -25,9 +25,10 @@ Section:NewButton("Infinite Yeild", "Its an admin script to type ;rj. used for c
 end)
 Section:NewButton("Fly", "E to toggle", function()
     print(loadstring(game:HttpGet('https://pastebin.com/raw/u5WsXVxm'))()
-)end)
+end)
 Section:NewButton("Godmode", "Godmode", function()
     print(loadstring(game:HttpGet('https://pastebin.com/raw/34xHUSPJ'))()
+ )end)
 
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Misc")
